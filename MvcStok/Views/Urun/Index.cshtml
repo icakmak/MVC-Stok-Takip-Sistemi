@@ -1,0 +1,72 @@
+﻿@using MvcStok.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLUrunler>
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    }
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Ürünler Listesi</h3>
+                </div>
+                <div class="col-lg-3 text-right" style="margin-top: auto;">
+                    <a href="/urun/create" class="btn btn-success btn-sm btn-block">Yeni Ürün</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body panel-yukseklik">
+            <table class="table table-sm table-striped" id="example">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">#</th>
+                        <th style="width: 25%;">Adı</th>
+                        <th style="width: 15%;">Marka</th>
+                        <th style="width: 15%;">Kategori</th>
+                        <th class="text-right" style="width: 10%;">Fiyat</th>
+                        <th class="text-right" style="width: 10%;">Stok</th>
+                        <th style=" width: 20%;">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.UrunId</td>
+                        <th>@item.UrunAd</th>
+                        <th>@item.Marka</th>
+                        <th>@item.TBLKategoriler.KategoriAd</th>
+                        <th class="text-right">@item.Fiyat</th>
+                        <th class="text-right">@item.Stok</th>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <a href="/urun/edit/?ProductId=@item.UrunId" class="btn btn-warning btn-block btn-sm">Edit</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="/urun/OrderList/?ProductId=@item.UrunId" class="btn btn-info btn-block btn-sm">List</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="/urun/Delete/?ProductId=@item.UrunId" class="btn btn-danger btn-block btn-sm">Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-center">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+    </div>
+
+
+    <hr>

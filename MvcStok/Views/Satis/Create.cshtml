@@ -1,0 +1,38 @@
+﻿@{
+ViewBag.Title = "Create";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h2>Satış Ekleme Formu</h2>
+    </div>
+    <div class="panel-body panel-yukseklik">
+        <form method="POST">
+            <div class="form-group">
+                <label for="urunid">Ürün Adı</label>
+                <select name="urunid" class="form-control">
+                    @foreach(var item in ViewBag.Urun){
+                    <option value="@item.UrunId">@item.UrunAd</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="musteriid">Müşteri Adı</label>
+                <select name="musteriid" class="form-control">
+                    @foreach(var item in ViewBag.Musteri){
+                    <option value="@item.MusteriId">@item.MusteriAd @item.MusteriSoyad</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="soyadi">Adet</label>
+                <input type="text" name="adet" id="adet" class="form-control" placeholder="Ürün Adeti" required>
+
+            </div>
+            <button type="submit" class="btn btn-sm btn-success btn-block">Ekle</button>
+        </form>
+    </div>
+</div>
+
+<hr>

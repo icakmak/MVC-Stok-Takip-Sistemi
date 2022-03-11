@@ -1,0 +1,55 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBLMusteriler>
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    }
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Müşteri Listesi</h3>
+                </div>
+                <div class="col-lg-3 text-right" style="margin-top: auto;">
+                    <a href="/musteri/create" class="btn btn-success btn-sm btn-block">Yeni Müşteri</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body panel-yukseklik">
+            <table class="table table-sm" id="example">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">#</th>
+                        <th style="width: 35%;">Adı</th>
+                        <th style="width: 35%;">Soyadı</th>
+                        <th style="width: 20%;">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                    <tr>
+                        <td>@item.MusteriId</td>
+                        <th>@item.MusteriAd</th>
+                        <th>@item.MusteriSoyad</th>
+                        <td>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a href="/musteri/edit/@item.MusteriId" class="btn btn-warning btn-block btn-sm">Edit</a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a href="/musteri/OrderList/?MusteriId=@item.MusteriId" class="btn btn-info btn-block btn-sm">List</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr>

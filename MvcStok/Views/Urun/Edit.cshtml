@@ -1,0 +1,50 @@
+﻿@model MvcStok.Models.Entity.TBLUrunler
+
+@{
+ViewBag.Title = "Create";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h2>Ürün Düzenleme Formu</h2>
+    </div>
+    <div class="panel-body panel-yukseklik">
+        <form method="POST">
+            <div class="form-group">
+                <label for="ad">Ürün Adı</label>
+                <input type="text" name="ad" id="ad" class="form-control" placeholder="Ürün Adı" value="@Model.UrunAd" required>
+            </div>
+            <div class="form-group">
+                <label for="marka">Ürün Markası</label>
+                <input type="text" name="marka" id="marka" class="form-control" placeholder="Ürün Markası" value="@Model.Marka" required>
+            </div>
+            <div class="form-group">
+                <label for="kategoriId">Ürün Kategorisi</label>
+                <select name="kategoriId" id="kategoriId" class="form-control">
+                    @foreach (var item in ViewBag.Kat)
+                    {
+                    if(item.KategoriId==Model.KategoriId){
+                    <option value="@item.KategoriId" selected>@item.KategoriAd</option>
+                    }
+                    else{
+                    <option value="@item.KategoriId">@item.KategoriAd</option>
+                    }
+                    }
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fiyat">Ürün Fiyatı</label>
+                <input type="text" name="fiyat" id="fiyat" class="form-control" placeholder="Ürün Fiyatı" value="@Model.Fiyat" required>
+            </div>
+            <div class="form-group">
+                <label for="stok">Ürün Stoğu</label>
+                <input type="text" name="stok" id="stok" class="form-control" placeholder="Ürün Stoğu" value="@Model.Stok" required>
+            </div>
+            <button type="submit" class="btn btn-sm btn-warning btn-block">Güncelle</button>
+        </form>
+    </div>
+</div>
+
+<hr>

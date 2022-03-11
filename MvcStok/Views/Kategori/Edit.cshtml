@@ -1,0 +1,24 @@
+﻿@model MvcStok.Models.Entity.TBLKategoriler
+
+@{
+ViewBag.Title = "Create";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h2>Kategori Düzenleme Formu</h2>
+    </div>
+    <div class="panel-body panel-yukseklik">
+        <form method="POST">
+            <div class="form-group">
+                <label for="kategoriAdi">Kategori Adı</label>
+                <input type="text" name="kategoriAdi" id="kategoriAdi" class="form-control" value="@Model.KategoriAd" required>
+
+            </div>
+            <button type="submit" class="btn btn-sm btn-warning btn-block">Güncelle</button>
+        </form>
+    </div>
+</div>
+
+<hr>

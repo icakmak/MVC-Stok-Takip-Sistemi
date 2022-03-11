@@ -1,0 +1,14 @@
+.panel-yukseklik {
+    min-height: 700px;
+    padding-right: 0%;
+    padding-left: 0%;
+}
+.table-sm td th {
+    padding: 0.3rem;
+}
+.table td {
+    padding: 0.3rem;
+}
+.table th {
+    padding: 0.3rem;
+}

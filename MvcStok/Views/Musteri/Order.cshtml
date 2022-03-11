@@ -1,0 +1,39 @@
+﻿@model MvcStok.Models.Entity.TBLMusteriler
+@{
+ViewBag.Title = "Order";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>@Model.MusteriAd @Model.MusteriSoyad - Satış Ekleme Formu</h4>
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-body panel-yukseklik">
+        <form method="POST">
+            <input type="hidden" name="MusteriId" value="@Model.MusteriId" />
+            <div class="form-group">
+                <label for="urunid">Ürün Adı</label>
+                <select name="urunid" class="form-control">
+                    @foreach (var item in ViewBag.Urun)
+                    {
+                    <option value="@item.UrunId">@item.UrunAd</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="adet">Adet</label>
+                <input type="text" name="adet" id="adet" class="form-control" placeholder="Ürün Adeti">
+            </div>
+            <button type="submit" class="btn btn-sm btn-success btn-block">Ekle</button>
+        </form>
+    </div>
+</div>
+
+
+<hr>

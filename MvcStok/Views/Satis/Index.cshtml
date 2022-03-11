@@ -1,0 +1,62 @@
+﻿@using MvcStok.Models.Entity
+@model List<TBLSatislar>
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    }
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Satışlar Listesi</h3>
+                </div>
+                <div class="col-lg-3 text-right" style="margin-top: auto;">
+                    <a href="/satis/create" class="btn btn-success btn-sm btn-block">Yeni Satış</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body panel-yukseklik">
+            <table class="table table-striped table-inverse table-responsive" id="example">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>#</th>
+                        <th>Ürün</th>
+                        <th>Müşteri</th>
+                        <th>Miktar</th>
+                        <th>Fiyat</th>
+                        <th>Tutar</th>
+                        <th>işlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.SatisId</td>
+                        <td>@item.TBLUrunler.UrunAd</td>
+                        <td>@item.TBLMusteriler.MusteriAd @item.TBLMusteriler.MusteriSoyad</td>
+                        <td>@item.Adet</td>
+                        <td>@item.Fiyat</td>
+                        <td>@(item.Fiyat * item.Adet)</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="/satis/update/?OrderId=@item.SatisId" class="btn btn-sm btn-warning btn-block">Update</a>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <a href="/satis/delete/?OrderId=@item.SatisId" class="btn btn-sm btn-danger btn-block">Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr>

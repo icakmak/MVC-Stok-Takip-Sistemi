@@ -1,0 +1,26 @@
+﻿@{
+ViewBag.Title = "Create";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h2>Müşteri Ekleme Formu</h2>
+    </div>
+    <div class="panel-body panel-yukseklik">
+        <form method="POST">
+            <div class="form-group">
+                <label for="adi">Müşteri Adı</label>
+                <input type="text" name="adi" id="adi" class="form-control" placeholder="Müşteri Adı" required>
+
+            </div>
+            <div class="form-group">
+                <label for="soyadi">Müşteri Soyadı</label>
+                <input type="text" name="soyadi" id="soyadi" class="form-control" placeholder="Müşteri Soyadı" required>
+
+            </div>
+            <button type="submit" class="btn btn-sm btn-success btn-block">Ekle</button>
+        </form>
+    </div>
+</div>
+
+<hr>

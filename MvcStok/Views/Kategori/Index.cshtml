@@ -1,0 +1,58 @@
+﻿@using MvcStok.Models.Entity
+@model List<OrderKategori>
+    @{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    }
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h3>Kategori Listesi</h3>
+                </div>
+                <div class="col-lg-3 text-right" style="margin-top: auto;">
+                    <a href="/kategori/create" class="btn btn-success btn-sm btn-block">Yeni Kategori</a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body panel-yukseklik">
+            <table class="table table-sm table-striped" id="example">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">#</th>
+                        <th style="width: 50%;">Kategori Adı</th>
+                        <th style="width: 20%;">Ürün Sayısı</th>
+                        <th style=" width: 20%;">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.KategoriId</td>
+                        <th>@item.KategoriAd</th>
+                        <th>@item.total</th>
+                        <td>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <a href="/kategori/edit/@item.KategoriId" class="btn btn-warning btn-block btn-sm">Edit</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="/kategori/OrderList/?KategoriId=@item.KategoriId" class="btn btn-info btn-block btn-sm">List</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href="/kategori/Delete/?KategoriId=@item.KategoriId" class="btn btn-danger btn-block btn-sm">Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <hr>

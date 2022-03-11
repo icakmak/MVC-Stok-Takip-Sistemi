@@ -1,0 +1,40 @@
+﻿@using MvcStok.Models.Entity
+@model IEnumerable<OrderKategori>
+    @{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    }
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-sm-6">@ViewBag.kategori.KategoriAd - Satış Listesi</div>
+                <div class="col-sm-6"></div>
+            </div>
+        </div>
+        <div class="panel-body panel-yukseklik">
+            <table class="table"  id="example">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ürün</th>
+                        <th class="text-right">Fiyat</th>
+                        <th class="text-right">Adet</th>
+                        <th class="text-right">Tutar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Adet</td>
+                        <td>@item.UrunAd</td>
+                        <td class="text-right">@item.Fiyat</td>
+                        <td class="text-right">@item.Adet</td>
+                        <td class="text-right">@(item.Adet*item.Fiyat)</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
